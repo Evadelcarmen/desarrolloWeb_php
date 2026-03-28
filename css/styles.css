@@ -1,3 +1,45 @@
+/*HEADER*/
+.header {
+    background: linear-gradient(90deg, #330066, #660099, #9933FF);
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.3);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin: 0;
+    font-size: 24px;
+    color: #ccccff;
+}
+
+.logo i {
+    margin-right: 8px;
+    color: #9999CC;
+}
+
+.user-info{
+    margin: 0;
+    font-size: 16px;
+    background-color: #9999cc;
+    color: #330066;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
 /* Estilo general */
 body {
     font-family: Arial, sans-serif;
@@ -56,14 +98,11 @@ button:hover {
 
 /* Contador en esquina */
 .contador-box {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #2c3e50;
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    background-color: #ccccff;
+    color: #330066;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-weight: bold;
 }
 
 /* Botón cerrar sesión */

@@ -11,7 +11,7 @@ if (isset($_GET["expirado"])) {
 // se asigna el tiempo maximo de sesion para el usuario
 $tiempo_maximo = 30;
 
-// 🔒 Cerrar sesión manual
+//Cerrar sesión manual
 if (isset($_GET["logout"])) {
     session_unset();
     session_destroy();
@@ -61,6 +61,7 @@ if (isset($_SESSION["tiempo_inicio"])) {
     <meta charset="UTF-8">
     <title>Mi sitio web</title>
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 <body>
 
@@ -93,10 +94,6 @@ if (isset($_SESSION["tiempo_inicio"])) {
     <!--MENSAJES CUANDO EL USUARIO INICIO SESION -->
     <h2>Hola, <?php echo $_SESSION["usuario"]; ?></h2>
 
-    <div class="contador-box">
-        <p>Restante: <span id="restante"></span></p>
-    </div>
-
     <a href="?logout=true" class="logout">Cerrar sesión</a>
 
     <!-- SCRIPT PARA LA CUENTA REGRESIVA-->
@@ -107,8 +104,11 @@ if (isset($_SESSION["tiempo_inicio"])) {
         let intervalo = setInterval(actualizarTiempo, 1000);
 
         function actualizarTiempo() {
-            //document.getElementById("contador").innerText = tiempo;
-            document.getElementById("restante").innerText = maximo - tiempo;
+            let restante = maximo - tiempo;
+
+            if (document.getElementById("restante")) {
+                document.getElementById("restante").innerText = restante;
+            }
 
             tiempo++;
 
