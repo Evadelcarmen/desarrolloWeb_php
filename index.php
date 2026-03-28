@@ -63,6 +63,7 @@ if (isset($_SESSION["tiempo_inicio"])) {
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
+
 <body>
 
 <?php include("includes/header.php"); ?>
@@ -94,8 +95,6 @@ if (isset($_SESSION["tiempo_inicio"])) {
     <!--MENSAJES CUANDO EL USUARIO INICIO SESION -->
     <h2>Hola, <?php echo $_SESSION["usuario"]; ?></h2>
 
-    <a href="?logout=true" class="logout">Cerrar sesión</a>
-
     <!-- SCRIPT PARA LA CUENTA REGRESIVA-->
     <script>
         let tiempo = <?php echo $tiempoActivo; ?>;
@@ -119,7 +118,13 @@ if (isset($_SESSION["tiempo_inicio"])) {
                 window.location.href = "?expirado=true";
             }
         }
-    //    setInterval(actualizarTiempo, 1000);
+        function toggleSidebar() {
+            const sidebar = document.querySelector(".sidebar");
+            const body = document.body;
+
+            sidebar.classList.toggle("active");
+            body.classList.toggle("shift");
+        }
     </script>
 
 <?php } ?>

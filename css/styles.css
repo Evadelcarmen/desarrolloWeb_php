@@ -12,6 +12,11 @@
     gap: 15px;
 }
 
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
 .header-container {
     width: 90%;
     margin: auto;
@@ -40,6 +45,74 @@
     border-radius: 8px;
 }
 
+/*MENU*/
+/*Boton sidebar*/
+.sidebar-toggle {
+    font-size: 26px;
+    color: #ccccff;
+    margin-right: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sidebar-toggle:hover {
+    color: white;
+}
+.sidebar {
+    position: fixed;
+    top: 70px;
+    left: -220px;
+    width: 220px;
+    height: 100%;
+    background: linear-gradient(90deg, #660099, #9933FF);
+    padding-top: 20px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    box-shadow: 3px 0px 10px rgba(0,0,0,0.3);
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-list li {
+    margin: 10px 0;
+}
+
+.sidebar-list a {
+    display: block;
+    padding: 12px 20px;
+    color: #CCCCFF;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.sidebar-list a:hover {
+    background-color: #9999cc;
+    color: #330066;
+    border-left: 5px solid #ccccff;
+}
+
+.sidebar-list i {
+    margin-right: 10px;
+}
+/*empuja el contenido*/
+body.shift {
+    margin-left: 220px;
+    transition: 0.3s;
+}
+
+.logout-item a {
+    color: #ffcccc;
+}
+
 /* Estilo general */
 body {
     font-family: Arial, sans-serif;
@@ -47,6 +120,11 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
+    margin-left: 0;
+}
+
+body.sidebar-active {
+    margin-left: 220px;
 }
 
 /* Títulos */
