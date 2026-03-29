@@ -82,12 +82,6 @@ if(!isset($_SESSION["usuario"])) {
         <i class="bi bi-play-fill"></i> Ejecutar Animación ForEach
     </button>
     <div id="resultado-foreach" class="ejemplo"></div>
-    <!--EJEMPLO DE ANIMACION-->
-    <h2>Animacion con JavaScript</h2>
-    <button onclick="mostrarNumeros()" class="btn-animar">
-        Mostrar numeros
-    </button>
-    <div id="resultado" class="ejemplo"></div>
 
 <?php
 // Tiempo máximo de sesión

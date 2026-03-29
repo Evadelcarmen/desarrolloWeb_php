@@ -85,7 +85,7 @@ if (isset($_SESSION["tiempo_inicio"])) {
 <?php if (!isset($_SESSION["usuario"])) { ?>
 
     <!-- SE CREA EL FORMULARIO -->
-    <form method="post" class="form-login">
+    <form method="post" action="index.php" class="form-login">
         <label>Usuario:</label>
         <input type="text" name="usuario" required><br><br>
 
