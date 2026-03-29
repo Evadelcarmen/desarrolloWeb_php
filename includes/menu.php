@@ -3,7 +3,7 @@
     <ul class="sidebar-list">
         <li><a href="#">Variables</a></li>
         <li><a href="#">Condicionales</a></li>
-        <li><a href="#">Bucles</a></li>
+        <li><a href="bucles.php"><i class="bi bi-arrow-repeat"></i>Bucles</a></li>
         <li><a href="#">Arreglos</a></li>
 
         <li class="logout-item">

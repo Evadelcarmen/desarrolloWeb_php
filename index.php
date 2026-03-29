@@ -9,7 +9,7 @@ if (isset($_GET["expirado"])) {
 }
 
 // se asigna el tiempo maximo de sesion para el usuario
-$tiempo_maximo = 30;
+$tiempo_maximo = 60;
 
 //Cerrar sesión manual
 if (isset($_GET["logout"])) {
@@ -43,6 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($usuario == $usuarioCorrecto && $password == $passwordCorrecto) {
         $_SESSION["usuario"] = $usuario;
         $_SESSION["tiempo_inicio"] = time();
+        // Redirigir para evitar reenvío del formulario (Post-Redirect-Get)
+        header("Location: index.php");
+        exit();
     } else {
         $error = "Usuario o contraseña incorrectos";
     }
@@ -69,7 +72,11 @@ if (isset($_SESSION["tiempo_inicio"])) {
 <?php include("includes/header.php"); ?>
 <?php include("includes/menu.php"); ?>
 
-<h1>Bienvenido</h1>
+<?php if (isset($_SESSION["usuario"])) { ?>
+    <h1>Bienvenido, <?php echo $_SESSION["usuario"]; ?></h1>
+<?php } else { ?>    
+    <h1>Inicia Sesión</h1>
+<?php } ?>
 
 <?php if (isset($_GET["expirado"])) { ?>
     <p style="color:red;">Tu sesión ha expirado</p>
@@ -92,15 +99,13 @@ if (isset($_SESSION["tiempo_inicio"])) {
 
 <?php } else { ?>
 
-    <!--MENSAJES CUANDO EL USUARIO INICIO SESION -->
-    <h2>Hola, <?php echo $_SESSION["usuario"]; ?></h2>
-
     <!-- SCRIPT PARA LA CUENTA REGRESIVA-->
     <script>
         let tiempo = <?php echo $tiempoActivo; ?>;
         let maximo = <?php echo $tiempo_maximo; ?>;
 
         let intervalo = setInterval(actualizarTiempo, 1000);
+        actualizarTiempo(); // Mostrar el valor inmediatamente
 
         function actualizarTiempo() {
             let restante = maximo - tiempo;
