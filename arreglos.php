@@ -37,8 +37,13 @@ if(!isset($_SESSION["usuario"])) {
         <?php
         $frutas = ["Manzana", "Banana", "Naranja"];
         foreach ($frutas as $fruta) {
-            echo "Fruta: $fruta <br>";
+            if ($fruta == "Banana"){
+                echo "Fruta especial: $fruta <br>";
+            } else {
+                echo "Fruta: $fruta <br>";
+            }
         }
+        echo "Total de frutas: " . count($frutas) . "<br>";
         ?>
     </div>
 
@@ -58,7 +63,11 @@ if(!isset($_SESSION["usuario"])) {
         ];
 
         foreach($persona as $clave => $valor) {
-            echo "$clave: $valor <br>";
+            if ($clave == "edad") {
+                echo "$clave: $valor años <br>";
+            } else {
+                echo "$clave: $valor <br>";
+            }
         }
         ?>
     </div>
@@ -77,7 +86,11 @@ if(!isset($_SESSION["usuario"])) {
             ["nombre" => "Luis", "edad" => 22]
         ];
         foreach($alumnos as $alumno) {
-            echo "Nombre: ". $alumno["nombre"] . "- Edad: " . $alumno["edad"] . "<br>";
+            if ($alumno["edad"] >= 21) {
+                echo "Mayor de edad: " . $alumno["nombre"] . "<br>";
+            } else {
+               echo "Menor de edad: " . $alumno["nombre"] . "<br>"; 
+            }
         }
         ?>
     </div>

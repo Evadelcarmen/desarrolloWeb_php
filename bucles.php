@@ -32,10 +32,16 @@ if(!isset($_SESSION["usuario"])) {
     <h2>Ejemplo For</h2>
     <div class="ejemplo">
         <?php
+
         for($i=1; $i <=5; $i++) {
-            echo "Numero: $i <br>";
+            if ($i % 2 == 0) {
+                echo "Numero par: $i <br>";
+            } else {
+                echo "Numero impar: $i <br>";
+            }    
         }
         ?>
+
     </div>
     <button onclick="animarFor()" class="btn-animar">
         <i class="bi bi-play-fill"></i> Ejecutar Animación For
@@ -73,8 +79,13 @@ if(!isset($_SESSION["usuario"])) {
     <div class="ejemplo">
         <?php
         $colores = ["Rojo", "Azul", "Verde"];
+
         foreach ($colores as $color) {
-            echo "Color: $color <br>";
+            if($color == "Rojo") {
+                echo "Color especial: $color <br>";
+            } else {
+                echo "Color: $color <br>";
+            }
         }
         ?>
     </div>
