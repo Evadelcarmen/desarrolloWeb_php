@@ -31,24 +31,19 @@ if (isset($_SESSION["tiempo_inicio"])) {
         exit();
     }
 }
-//declaracion de usuari y contraseñas simulados
-$usuarioCorrecto = "admin";
-$passwordCorrecto = "1234";
 
-// se procesa el inicio de sesion
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $usuario = $_POST["usuario"];
-    $password = $_POST["password"];
+// iniciar sesión (sin login)
+if (isset($_GET["iniciar"])) {
+    $_SESSION["usuario"] = "Invitado";
+    $_SESSION["tiempo_inicio"] = time();
+}
 
-    if ($usuario == $usuarioCorrecto && $password == $passwordCorrecto) {
-        $_SESSION["usuario"] = $usuario;
-        $_SESSION["tiempo_inicio"] = time();
-        // Redirigir para evitar reenvío del formulario (Post-Redirect-Get)
-        header("Location: index.php");
-        exit();
-    } else {
-        $error = "Usuario o contraseña incorrectos";
-    }
+// einiciar sesión
+if (isset($_GET["reiniciar"])) {
+    session_unset();
+    session_destroy();
+    header("Location: index.php");
+    exit();
 }
 
 // extra
@@ -71,72 +66,84 @@ if (isset($_SESSION["tiempo_inicio"])) {
 
 <?php include("includes/header.php"); ?>
 <?php include("includes/menu.php"); ?>
+
 <div class="contenido">
-    <?php if (isset($_SESSION["usuario"])) { ?>
-    <h1>Bienvenido, <?php echo $_SESSION["usuario"]; ?></h1>
-<?php } else { ?>    
-    <h1>Inicia Sesión</h1>
-<?php } ?>
-
-<?php if (isset($_GET["expirado"])) { ?>
-    <p style="color:red;">Tu sesión ha expirado</p>
-<?php } ?>
-
 <?php if (!isset($_SESSION["usuario"])) { ?>
 
-    <!-- SE CREA EL FORMULARIO -->
-    <form method="post" action="index.php" class="form-login">
-        <label>Usuario:</label>
-        <input type="text" name="usuario" required><br><br>
+    <h1>Inicia Sesión</h1>
 
-        <label>Contraseña:</label>
-        <input type="password" name="password" required><br><br>
-
-        <button type="submit">Iniciar sesión</button>
-    </form>
-
-    <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
-
-</div>
+    <a href="?iniciar=true" class="btn-animar">
+        Iniciar sesión
+    </a>
 
 <?php } else { ?>
-</div>
-    <!-- SCRIPT PARA LA CUENTA REGRESIVA-->
-    <script>
-        let tiempo = <?php echo $tiempoActivo; ?>;
-        let maximo = <?php echo $tiempo_maximo; ?>;
 
-        let intervalo = setInterval(actualizarTiempo, 1000);
-        actualizarTiempo(); // Mostrar el valor inmediatamente
-
-        function actualizarTiempo() {
-            let restante = maximo - tiempo;
-
-            if (document.getElementById("restante")) {
-                document.getElementById("restante").innerText = restante;
-            }
-
-            tiempo++;
-
-            // CUANDO YA PASO EL TIEMPO, SE HACE UN CIERRE DEFINITIVO
-            if (tiempo > maximo) {
-                clearInterval(intervalo);
-                //alert("Sesión expirada");
-                window.location.href = "?expirado=true";
-            }
-        }
-        function toggleSidebar() {
-            const sidebar = document.querySelector(".sidebar");
-            const body = document.body;
-
-            sidebar.classList.toggle("active");
-            body.classList.toggle("shift");
-        }
-    </script>
+    <h1>Bienvenido, <?php echo $_SESSION["usuario"]; ?></h1>
+    <br>
+    <a href="?reiniciar=true" class="logout">
+        Reiniciar sesión
+    </a>
 
 <?php } ?>
 
+</div>
+
 <?php include("includes/footer.php"); ?>
+
+<script>
+    let tiempo = <?php echo $tiempoActivo; ?>;
+    let maximo = <?php echo $tiempo_maximo; ?>;
+
+    let intervalo = setInterval(actualizarTiempo, 1000);
+
+    function actualizarTiempo() {
+
+        // Mostrar tiempo restante (si usas contador)
+        let restante = maximo - tiempo;
+        if (document.getElementById("restante")) {
+            document.getElementById("restante").innerText = restante;
+        }
+
+        // Mostrar tiempo activo en minutos y segundos
+        let minutos = Math.floor(tiempo / 60);
+        let segundos = tiempo % 60;
+
+        let texto = minutos + " min " + segundos + " seg";
+
+        if (document.getElementById("tiempoActivoTexto")) {
+            document.getElementById("tiempoActivoTexto").innerText = texto;
+        }
+
+        // Mostrar hora actual dinámica
+        let ahora = new Date();
+        let horas = String(ahora.getHours()).padStart(2, '0');
+        let mins = String(ahora.getMinutes()).padStart(2, '0');
+        let segs = String(ahora.getSeconds()).padStart(2, '0');
+        if (document.getElementById("horaActualTexto")) {
+            document.getElementById("horaActualTexto").innerText = horas + ":" + mins + ":" + segs;
+        }
+
+        tiempo++;
+
+        // Expirar sesión
+        if (tiempo > maximo) {
+            clearInterval(intervalo);
+            window.location.href = "?expirado=true";
+        }
+    }
+
+    // Ejecutar inmediato
+    actualizarTiempo();
+
+    // Toggle del sidebar
+    function toggleSidebar() {
+        const sidebar = document.querySelector(".sidebar");
+        const body = document.body;
+
+        sidebar.classList.toggle("active");
+        body.classList.toggle("shift");
+    }
+</script>
 
 </body>
 </html>

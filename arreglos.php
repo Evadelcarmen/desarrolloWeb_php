@@ -124,6 +124,24 @@ if (isset($_SESSION["tiempo_inicio"])) {
             document.getElementById("restante").innerText = restante;
         }
 
+        // Mostrar tiempo activo en minutos y segundos
+        let minutos = Math.floor(tiempo / 60);
+        let segundos = tiempo % 60;
+        let texto = minutos + " min " + segundos + " seg";
+
+        if (document.getElementById("tiempoActivoTexto")) {
+            document.getElementById("tiempoActivoTexto").innerText = texto;
+        }
+
+        // Mostrar hora actual dinámica
+        let ahora = new Date();
+        let horas = String(ahora.getHours()).padStart(2, '0');
+        let mins = String(ahora.getMinutes()).padStart(2, '0');
+        let segs = String(ahora.getSeconds()).padStart(2, '0');
+        if (document.getElementById("horaActualTexto")) {
+            document.getElementById("horaActualTexto").innerText = horas + ":" + mins + ":" + segs;
+        }
+
         tiempo++;
 
         if (tiempo > maximo) {

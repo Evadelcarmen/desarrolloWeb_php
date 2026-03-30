@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="footer-container">
         <p class="footer-title">
-            <i class="bi bi-code-slash"></i> Progrmacion Web
+            <i class="bi bi-code-slash"></i> Programación Web
 
         </p>
         <div class="footer-members">
