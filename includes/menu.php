@@ -1,6 +1,7 @@
 <?php if (isset($_SESSION["usuario"]))  { ?>
 <nav class="sidebar">
     <ul class="sidebar-list">
+        <li><a href="index.php">Inicio</a></li>
         <li><a href="#">Variables</a></li>
         <li><a href="#">Condicionales</a></li>
         <li><a href="bucles.php"><i class="bi bi-arrow-repeat"></i>Bucles</a></li>

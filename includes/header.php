@@ -7,7 +7,9 @@
             <?php } ?>
 
             <h1 class="logo">
-                <i class="bi bi-pc-display"></i> Mi sistema PHP
+                <a href="/desarrolloWeb_php/index.php">
+                    <i class="bi bi-pc-display"></i> Mi sistema PHP
+                </a>
             </h1>
         </div>
 

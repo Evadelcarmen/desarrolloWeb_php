@@ -71,8 +71,8 @@ if (isset($_SESSION["tiempo_inicio"])) {
 
 <?php include("includes/header.php"); ?>
 <?php include("includes/menu.php"); ?>
-
-<?php if (isset($_SESSION["usuario"])) { ?>
+<div class="contenido">
+    <?php if (isset($_SESSION["usuario"])) { ?>
     <h1>Bienvenido, <?php echo $_SESSION["usuario"]; ?></h1>
 <?php } else { ?>    
     <h1>Inicia Sesión</h1>
@@ -97,8 +97,10 @@ if (isset($_SESSION["tiempo_inicio"])) {
 
     <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
 
-<?php } else { ?>
+</div>
 
+<?php } else { ?>
+</div>
     <!-- SCRIPT PARA LA CUENTA REGRESIVA-->
     <script>
         let tiempo = <?php echo $tiempoActivo; ?>;

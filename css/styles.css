@@ -36,6 +36,11 @@
     color: #9999CC;
 }
 
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .user-info{
     margin: 0;
     font-size: 16px;
@@ -44,6 +49,47 @@
     padding: 5px 10px;
     border-radius: 8px;
 }
+/*FOOTER*/
+html, body {
+    height: 100%;
+}
+
+
+.footer {
+    background: linear-gradient(90deg, #330066, #660099, #9933ff);
+    color: white;
+    padding: 20px 0;
+    margin-top: auto;
+    width: 100%;
+    box-shadow: 0px -2px 8px rgba(0,0,0,0.3);
+}
+
+.footer-container {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+.footer-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #ccccff;
+}
+
+.footer-members p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.footer-members i {
+    margin-right: 5px;
+    color: #9999cc;
+}
+
+.footer-members h1 {
+    color: #9999CC;
+}
+
 
 /*MENU*/
 /*Boton sidebar*/
@@ -115,6 +161,9 @@ body.shift {
 
 /* Estilo general */
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: Arial, sans-serif;
     background: #f4f6f9;
     margin: 0;
@@ -200,6 +249,7 @@ button:hover {
 
 /*BUCLES*/
 .contenido {
+    flex: 1;
     padding: 20px;
     max-width: 900px;
     margin: 0 auto;
