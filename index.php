@@ -1,3 +1,4 @@
+```php
 <?php
 session_start();
 
@@ -38,7 +39,7 @@ if (isset($_GET["iniciar"])) {
     $_SESSION["tiempo_inicio"] = time();
 }
 
-// einiciar sesión
+// reiniciar sesión
 if (isset($_GET["reiniciar"])) {
     session_unset();
     session_destroy();
@@ -68,6 +69,7 @@ if (isset($_SESSION["tiempo_inicio"])) {
 <?php include("includes/menu.php"); ?>
 
 <div class="contenido">
+
 <?php if (!isset($_SESSION["usuario"])) { ?>
 
     <h1>Inicia Sesión</h1>
@@ -79,7 +81,33 @@ if (isset($_SESSION["tiempo_inicio"])) {
 <?php } else { ?>
 
     <h1>Bienvenido, <?php echo $_SESSION["usuario"]; ?></h1>
+
+    <p>Selecciona un tema del proyecto:</p>
+
+    <div class="menu-temas">
+        <a href="variables.php" class="btn-animar">
+            <i class="bi bi-code-square"></i> Variables
+        </a>
+
+        <a href="sesiones.php" class="btn-animar">
+            <i class="bi bi-person"></i> Sesiones
+        </a>
+
+        <a href="condicionales.php" class="btn-animar">
+            <i class="bi bi-question-circle"></i> Condicionales
+        </a>
+
+        <a href="arreglos.php" class="btn-animar">
+            <i class="bi bi-collection"></i> Arreglos
+        </a>
+
+        <a href="bucles.php" class="btn-animar">
+            <i class="bi bi-arrow-repeat"></i> Bucles
+        </a>
+    </div>
+
     <br>
+
     <a href="?reiniciar=true" class="logout">
         Reiniciar sesión
     </a>
@@ -98,13 +126,11 @@ if (isset($_SESSION["tiempo_inicio"])) {
 
     function actualizarTiempo() {
 
-        // Mostrar tiempo restante (si usas contador)
         let restante = maximo - tiempo;
         if (document.getElementById("restante")) {
             document.getElementById("restante").innerText = restante;
         }
 
-        // Mostrar tiempo activo en minutos y segundos
         let minutos = Math.floor(tiempo / 60);
         let segundos = tiempo % 60;
 
@@ -114,28 +140,25 @@ if (isset($_SESSION["tiempo_inicio"])) {
             document.getElementById("tiempoActivoTexto").innerText = texto;
         }
 
-        // Mostrar hora actual dinámica
         let ahora = new Date();
         let horas = String(ahora.getHours()).padStart(2, '0');
         let mins = String(ahora.getMinutes()).padStart(2, '0');
         let segs = String(ahora.getSeconds()).padStart(2, '0');
+
         if (document.getElementById("horaActualTexto")) {
             document.getElementById("horaActualTexto").innerText = horas + ":" + mins + ":" + segs;
         }
 
         tiempo++;
 
-        // Expirar sesión
         if (tiempo > maximo) {
             clearInterval(intervalo);
             window.location.href = "?expirado=true";
         }
     }
 
-    // Ejecutar inmediato
     actualizarTiempo();
 
-    // Toggle del sidebar
     function toggleSidebar() {
         const sidebar = document.querySelector(".sidebar");
         const body = document.body;
@@ -147,3 +170,4 @@ if (isset($_SESSION["tiempo_inicio"])) {
 
 </body>
 </html>
+```
