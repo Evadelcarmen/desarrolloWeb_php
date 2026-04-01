@@ -1,9 +1,13 @@
+<?php date_default_timezone_set('America/Mexico_City'); ?>
 <header class="header">
     <div class="header-container">
 
         <div class="header-left">
             <?php if (isset($_SESSION["usuario"])) { ?>
-                <i class="bi bi-layout-sidebar sidebar-toggle" onclick="toggleSidebar()"></i>
+                <div class="sidebar-toggle" onclick="toggleSidebar()">
+                    <i class="bi bi-layout-sidebar"></i>
+                    <span style="display:block; font-size:10px; margin-top:2px;">Menú</span>
+                </div>
             <?php } ?>
 
             <h1 class="logo">
