@@ -1,8 +1,8 @@
 # Proyecto de desarrollo web con PHP
 # Nombres de los integrantes:
-Chávez Nuricumbo Mariana
-Chacón Hernández Yazmin Guadalupe
-González Santiz Eva del Carmen
+- Chávez Nuricumbo Mariana
+- Chacón Hernández Yazmin Guadalupe
+- González Santiz Eva del Carmen
 
 # Nombre de la materia:
 Programación Web - U4
@@ -12,9 +12,9 @@ Desarrollar un sitio web dinamico utilzando PHP, donde demostramos las aplicacio
 
 # Temas PHP implementados
 Trabajamos principalmente en temas que ya habiamos visto en clase y que son muy importantes para poder usar PHP facilmente, entre ellas son:
--Variables
--Condicionales
--Bucles
--Arreglos
--Sesiones
+- Variables
+- Condicionales
+- Bucles
+- Arreglos
+- Sesiones
 
